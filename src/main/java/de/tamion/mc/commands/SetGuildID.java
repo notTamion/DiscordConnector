@@ -19,6 +19,8 @@ public class SetGuildID implements CommandExecutor {
             } else {
                 sender.sendMessage("/setGuildID [ID]");
             }
+        } else {
+            sender.sendMessage("You are not allowed to execute this Command!");
         }
         return false;
     }

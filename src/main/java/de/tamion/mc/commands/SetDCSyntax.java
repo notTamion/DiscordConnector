@@ -23,6 +23,8 @@ public class SetDCSyntax implements CommandExecutor {
             } else {
                 sender.sendMessage("/setDCSyntax [Syntax]");
             }
+        } else {
+            sender.sendMessage("You are not allowed to execute this Command!");
         }
         return false;
     }
