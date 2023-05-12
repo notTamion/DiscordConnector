@@ -34,15 +34,15 @@ public class DCMain {
         if(startallowed == false) {
             return;
         }
-        PluginManager pluginManager = Bukkit.getPluginManager();
-        pluginManager.registerEvents(new Chat(), MCMain.getPlugin());
-        pluginManager.registerEvents(new JoinLeave(), MCMain.getPlugin());
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(config.getString("Bot.token"));
         builder.setStatus(OnlineStatus.ONLINE);
         builder.addEventListeners(new DCChat());
         builder.enableIntents(GatewayIntent.MESSAGE_CONTENT);
         try {
             jda = builder.build();
+            PluginManager pluginManager = Bukkit.getPluginManager();
+            pluginManager.registerEvents(new Chat(), MCMain.getPlugin());
+            pluginManager.registerEvents(new JoinLeave(), MCMain.getPlugin());
             Bukkit.getConsoleSender().sendMessage("§aBOT STARTED!");
         } catch (InvalidTokenException e) {
             Bukkit.getConsoleSender().sendMessage("§cINVALID BOT TOKEN");
