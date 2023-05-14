@@ -37,10 +37,10 @@ public final class MCMain extends JavaPlugin {
     public static void defaultconfig() {
         FileConfiguration config = plugin.getConfig();
         if(!config.contains("Bot.mcsyntax")) {
-            config.set("Bot.mcsyntax", "[DC] {Username}: {Message}");
+            config.set("Bot.mcsyntax", "[DC] {username}: {message}");
         }
         if(!config.contains("Bot.dcsyntax")) {
-            config.set("Bot.dcsyntax", "{Username}: {Message}");
+            config.set("Bot.dcsyntax", "{username}: {message}");
         }
         if(!config.contains("Bot.token")) {
             config.set("Bot.token", "TOKEN");
