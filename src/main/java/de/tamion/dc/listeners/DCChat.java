@@ -15,7 +15,7 @@ public class DCChat extends ListenerAdapter {
         if(!e.isFromType(ChannelType.TEXT)) {
             return;
         }
-        if(!e.getChannel().getId().equals(config.getString("Bot.textchannelid"))&&!e.getGuild().getId().equals(config.getString("Bot.guildid"))) {
+        if(!e.getChannel().getId().equals(config.getString("Bot.textchannelid")) || !e.getGuild().getId().equals(config.getString("Bot.guildid"))) {
             return;
         }
         if(e.getAuthor().isBot()) {
