@@ -1,6 +1,6 @@
-package de.tamion.dc.listeners;
+package de.tamion.discord.listeners;
 
-import de.tamion.mc.MCMain;
+import de.tamion.minecraft.MCMain;
 import net.dv8tion.jda.api.entities.channel.ChannelType;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -15,10 +15,13 @@ public class DCChat extends ListenerAdapter {
         if(!e.isFromType(ChannelType.TEXT)) {
             return;
         }
-        if(!e.getChannel().getId().equals(config.getString("Bot.textchannelid")) || !e.getGuild().getId().equals(config.getString("Bot.guildid"))) {
+        if(!e.getChannel().getId().equals(config.getString("Bot.chatid")) || !e.getGuild().getId().equals(config.getString("Bot.guildid"))) {
             return;
         }
         if(e.getAuthor().isBot()) {
+            return;
+        }
+        if(e.getMessage().getContentDisplay().startsWith("/")) {
             return;
         }
         Bukkit.getServer().broadcastMessage(config.getString("Bot.mcsyntax").replaceAll("\\{username}", e.getMember().getEffectiveName()).replaceAll("\\{message}", msg));

@@ -1,27 +1,31 @@
-package de.tamion.mc.commands;
+package de.tamion.minecraft.commands;
 
-import de.tamion.mc.MCMain;
+import de.tamion.minecraft.MCMain;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.jetbrains.annotations.NotNull;
 
-public class SetToken implements CommandExecutor {
+public class SetDCSyntax implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
-        if(!sender.hasPermission("DCChat.token") || !sender.hasPermission("DCChat.admin")) {
+        if(!sender.hasPermission("DCChat.syntax") || !sender.hasPermission("DCChat.admin")) {
             sender.sendMessage("You are not allowed to execute this Command!");
             return false;
         }
-        if(args.length != 1) {
-            sender.sendMessage("/setBotToken [BotToken]");
+        if(!(args.length >= 1)) {
+            sender.sendMessage("/setDCSyntax [Syntax]");
             return false;
         }
         FileConfiguration config = MCMain.getPlugin().getConfig();
-        config.set("Bot.token", args[0]);
+        StringBuilder sb = new StringBuilder();
+        for(String wor: args) {
+            sb.append(wor + " ");
+        }
+        config.set("Bot.dcsyntax", sb.toString());
         MCMain.getPlugin().saveConfig();
-        sender.sendMessage("Token has been set to " + args[0]);
+        sender.sendMessage("Syntax Set!");
         return true;
     }
 }

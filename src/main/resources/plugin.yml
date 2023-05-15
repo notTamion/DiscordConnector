@@ -1,6 +1,6 @@
 name: DCChat
 version: '${project.version}'
-main: de.tamion.mc.MCMain
+main: de.tamion.minecraft.MCMain
 api-version: 1.19
 authors: [ Tamion ]
 description: Uses JDA to combine Minecraft and Discord chat
@@ -9,5 +9,6 @@ commands:
   setmcsyntax:
   setdcsyntax:
   setguildid:
-  setchannelid:
+  setchatid:
   restartbot:
+  setconsoleid:
