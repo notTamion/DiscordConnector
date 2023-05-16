@@ -6,6 +6,7 @@ import de.tamion.minecraft.MCMain;
 import de.tamion.minecraft.listeners.Chat;
 import de.tamion.minecraft.listeners.JoinLeave;
 import de.tamion.others.ConsoleAppender;
+import de.tamion.others.ConsoleBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -48,6 +49,7 @@ public class DCMain {
                     Logger log = (Logger) LogManager.getRootLogger();
                     log.addAppender(new ConsoleAppender());
                     jb.addEventListeners(new Console());
+                    ConsoleBuilder.consolescheduler();
                     MCMain.getPlugin().getLogger().info("Console started");
                 }
             } else {

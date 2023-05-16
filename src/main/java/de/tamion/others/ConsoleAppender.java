@@ -24,7 +24,16 @@ public class ConsoleAppender extends AbstractAppender {
     public void append(LogEvent e) {
         FileConfiguration config = MCMain.getPlugin().getConfig();
         if(DCMain.jda != null && DCMain.jda.getGuildById(config.getString("Bot.guildid")) != null) {
-            DCMain.jda.getGuildById(config.getString("Bot.guildid")).getTextChannelById(config.getString("Bot.consoleid")).sendMessage(e.getMessage().getFormattedMessage()).queue();
+            if(ConsoleBuilder.sb.length()+e.getMessage().getFormattedMessage().length()>1990) {
+                DCMain.jda.getGuildById(config.getString("Bot.guildid")).getTextChannelById(config.getString("Bot.consoleid")).sendMessage(ConsoleBuilder.sb.toString()).queue();
+                ConsoleBuilder.sb.setLength(0);
+                if(e.getMessage().getFormattedMessage().length()<1990) {
+                    ConsoleBuilder.sb.append(e.getMessage().getFormattedMessage() + "\n");
+                }
+            } else {
+                ConsoleBuilder.sb.append(e.getMessage().getFormattedMessage() + "\n");
+            }
+
         }
     }
 }
