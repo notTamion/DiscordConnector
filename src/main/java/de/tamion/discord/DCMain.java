@@ -5,7 +5,7 @@ import de.tamion.discord.listeners.DCChat;
 import de.tamion.minecraft.MCMain;
 import de.tamion.minecraft.listeners.Chat;
 import de.tamion.minecraft.listeners.JoinLeave;
-import de.tamion.others.ConsoleAppender;
+import de.tamion.others.DCChatConsoleAppender;
 import de.tamion.others.ConsoleBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -16,6 +16,8 @@ import org.apache.logging.log4j.core.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
+
+import java.util.stream.Collectors;
 
 public class DCMain {
 
@@ -34,24 +36,20 @@ public class DCMain {
                 MCMain.getPlugin().getLogger().info("GuildID not set. Please set with /setGuildID [ID] or change it directly in the config.yml");
                 startallowed = false;
             }
-            if(config.contains("Bot.chatid") && !config.get("Bot.chatid").equals("CHATID")) {
-                if(startallowed) {
-                    jb.addEventListeners(new DCChat());
-                    pluginManager.registerEvents(new Chat(), MCMain.getPlugin());
-                    pluginManager.registerEvents(new JoinLeave(), MCMain.getPlugin());
-                    MCMain.getPlugin().getLogger().info("Chat started");
-                }
+            if(config.contains("Bot.chatid") && !config.get("Bot.chatid").equals("CHATID") && startallowed) {
+                jb.addEventListeners(new DCChat());
+                pluginManager.registerEvents(new Chat(), MCMain.getPlugin());
+                pluginManager.registerEvents(new JoinLeave(), MCMain.getPlugin());
+                MCMain.getPlugin().getLogger().info("Chat started");
             } else {
-                MCMain.getPlugin().getLogger().info("ChannelID not set. Please set with /setChatID [ID] or change it directly in the config.yml");
+                MCMain.getPlugin().getLogger().info("ChatID not set. Please set with /setChatID [ID] or change it directly in the config.yml");
             }
-            if(config.contains("Bot.consoleid") && !config.get("Bot.consoleid").equals("CONSOLEID")) {
-                if(startallowed) {
-                    Logger log = (Logger) LogManager.getRootLogger();
-                    log.addAppender(new ConsoleAppender());
-                    jb.addEventListeners(new Console());
-                    ConsoleBuilder.consolescheduler();
-                    MCMain.getPlugin().getLogger().info("Console started");
-                }
+            if(config.contains("Bot.consoleid") && !config.get("Bot.consoleid").equals("CONSOLEID") && startallowed) {
+                Logger log = (Logger) LogManager.getRootLogger();
+                log.addAppender(new DCChatConsoleAppender());
+                jb.addEventListeners(new Console());
+                ConsoleBuilder.consolescheduler();
+                MCMain.getPlugin().getLogger().info("Console started");
             } else {
                 MCMain.getPlugin().getLogger().info("ConsoleID not set. Please set with /setConsoleID [ID] or change it directly in the config.yml");
             }
@@ -67,6 +65,9 @@ public class DCMain {
 
     public static void shutdown() {
         if(jda != null) {
+            Bukkit.getScheduler().cancelTasks(MCMain.getPlugin());
+            Logger log = (Logger) LogManager.getRootLogger();
+            log.removeAppender(log.getAppenders().get("DCChatConsoleAppender"));
             jda.shutdown();
         } else {
             MCMain.getPlugin().getLogger().info("Can't stop bot. Bot not running.");
