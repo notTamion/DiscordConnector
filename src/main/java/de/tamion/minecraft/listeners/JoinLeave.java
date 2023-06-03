@@ -12,12 +12,12 @@ public class JoinLeave implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         FileConfiguration config = MCMain.getPlugin().getConfig();
-        DCMain.jda.getGuildById(config.getString("Bot.guildid")).getTextChannelById(config.getString("Bot.chatid")).sendMessage(e.getPlayer().getName() + " joined to Server!").queue();
+        DCMain.jda.getGuildById(config.getString("Bot.guildid")).getTextChannelById(config.getString("Bot.chatid")).sendMessage(config.getString("Bot.joinsyntax").replaceAll("\\{username}", e.getPlayer().getName())).queue();
     }
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
         FileConfiguration config = MCMain.getPlugin().getConfig();
-        DCMain.jda.getGuildById(config.getString("Bot.guildid")).getTextChannelById(config.getString("Bot.chatid")).sendMessage(e.getPlayer().getName() + " left to Server!").queue();
+        DCMain.jda.getGuildById(config.getString("Bot.guildid")).getTextChannelById(config.getString("Bot.chatid")).sendMessage(config.getString("Bot.leavesyntax").replaceAll("\\{username}", e.getPlayer().getName())).queue();
     }
 }

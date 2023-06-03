@@ -17,8 +17,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
 
-import java.util.stream.Collectors;
-
 public class DCMain {
 
     public static JDA jda;
@@ -65,7 +63,6 @@ public class DCMain {
 
     public static void shutdown() {
         if(jda != null) {
-            Bukkit.getScheduler().cancelTasks(MCMain.getPlugin());
             Logger log = (Logger) LogManager.getRootLogger();
             log.removeAppender(log.getAppenders().get("DCChatConsoleAppender"));
             jda.shutdown();

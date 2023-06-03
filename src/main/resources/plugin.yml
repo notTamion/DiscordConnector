@@ -11,5 +11,6 @@ commands:
   setdcsyntax:
   setguildid:
   setchatid:
-  restartbot:
   setconsoleid:
+  setjoinsyntax:
+  setleavesyntax:
