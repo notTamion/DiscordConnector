@@ -25,5 +25,6 @@ Everything that gets printed to the console also gets sent to the Channel that h
 - /setdcsyntax {syntax} - Change how messages send on Minecraft get displayed for users on Discord. - Example Syntax: [MC]{username}: {message}
 - /setjoinsyntax {syntax} - Change how join messages gets displayed for users on Discord - Example Syntax: [MC]{username} joined the Server!
 - /setleavesyntax {syntax} - Change how leave messages gets displayed for users on Discord - Example Syntax: [MC]{username} left the Server!
+
 NOTE: {username} and {message} need to be written in lowercase.\
 Now you should be good to go for questions or help please contact me on Discord Tamion#7835 or SpigotMC.
