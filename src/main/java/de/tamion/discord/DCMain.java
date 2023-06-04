@@ -34,26 +34,18 @@ public class DCMain {
                 MCMain.getPlugin().getLogger().info("GuildID not set. Please set with /setGuildID [ID] or change it directly in the config.yml");
                 startallowed = false;
             }
-            if(config.contains("Bot.chatid") && !config.get("Bot.chatid").equals("CHATID") && startallowed) {
-                jb.addEventListeners(new DCChat());
-                pluginManager.registerEvents(new Chat(), MCMain.getPlugin());
-                pluginManager.registerEvents(new JoinLeave(), MCMain.getPlugin());
-                MCMain.getPlugin().getLogger().info("Chat started");
-            } else {
-                MCMain.getPlugin().getLogger().info("ChatID not set. Please set with /setChatID [ID] or change it directly in the config.yml");
-            }
-            if(config.contains("Bot.consoleid") && !config.get("Bot.consoleid").equals("CONSOLEID") && startallowed) {
-                Logger log = (Logger) LogManager.getRootLogger();
-                log.addAppender(new DCChatConsoleAppender());
-                jb.addEventListeners(new Console());
-                ConsoleBuilder.consolescheduler();
-                MCMain.getPlugin().getLogger().info("Console started");
-            } else {
-                MCMain.getPlugin().getLogger().info("ConsoleID not set. Please set with /setConsoleID [ID] or change it directly in the config.yml");
-            }
             if(!startallowed) {
                 return;
             }
+            jb.addEventListeners(new DCChat());
+            pluginManager.registerEvents(new Chat(), MCMain.getPlugin());
+            pluginManager.registerEvents(new JoinLeave(), MCMain.getPlugin());
+            MCMain.getPlugin().getLogger().info("Chat started");
+            Logger log = (Logger) LogManager.getRootLogger();
+            log.addAppender(new DCChatConsoleAppender());
+            jb.addEventListeners(new Console());
+            ConsoleBuilder.consolescheduler();
+            MCMain.getPlugin().getLogger().info("Console started");
             jda = jb.build();
             MCMain.getPlugin().getLogger().info("Bot started.");
         } catch (Exception e) {

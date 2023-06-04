@@ -2,8 +2,8 @@ package de.tamion.discord.listeners;
 
 import de.tamion.minecraft.MCMain;
 import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.channel.ChannelType;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.bukkit.Bukkit;
@@ -18,7 +18,8 @@ public class Console extends ListenerAdapter {
         if(!e.isFromType(ChannelType.TEXT)) {
             return;
         }
-        if(!e.getChannel().getId().equals(config.getString("Bot.consoleid")) || !e.getGuild().getId().equals(config.getString("Bot.guildid"))) {
+        TextChannel channel = (TextChannel) e.getChannel();
+        if(channel.getTopic() == null || !channel.getTopic().contains("MCCONSOLE") || !e.getGuild().getId().equals(config.getString("Bot.guildid"))) {
             return;
         }
         if(e.getAuthor().isBot()) {
