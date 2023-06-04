@@ -1,6 +1,5 @@
 package de.tamion.others;
 
-import de.tamion.discord.DCMain;
 import de.tamion.minecraft.MCMain;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;

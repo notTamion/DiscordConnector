@@ -2,7 +2,6 @@ package de.tamion.discord.listeners;
 
 import de.tamion.minecraft.MCMain;
 import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.channel.ChannelType;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;

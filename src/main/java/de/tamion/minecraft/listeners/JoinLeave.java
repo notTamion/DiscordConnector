@@ -1,6 +1,5 @@
 package de.tamion.minecraft.listeners;
 
-import de.tamion.discord.DCMain;
 import de.tamion.minecraft.MCMain;
 import de.tamion.others.Utils;
 import org.bukkit.configuration.file.FileConfiguration;
