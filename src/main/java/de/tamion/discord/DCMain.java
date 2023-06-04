@@ -62,9 +62,11 @@ public class DCMain {
     }
 
     public static void shutdown() {
-        if(jda != null) {
-            Logger log = (Logger) LogManager.getRootLogger();
+        Logger log = (Logger) LogManager.getRootLogger();
+        if(log.getAppenders().containsKey("DCChatConsoleAppender")) {
             log.removeAppender(log.getAppenders().get("DCChatConsoleAppender"));
+        }
+        if(jda != null) {
             jda.shutdown();
         } else {
             MCMain.getPlugin().getLogger().info("Can't stop bot. Bot not running.");
