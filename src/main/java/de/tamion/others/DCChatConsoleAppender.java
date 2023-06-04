@@ -27,13 +27,13 @@ public class DCChatConsoleAppender extends AbstractAppender {
         FileConfiguration config = MCMain.getPlugin().getConfig();
         if(DCMain.jda != null && DCMain.jda.getGuildById(config.getString("Bot.guildid")) != null) {
             if(ConsoleBuilder.sb.length()+e.getMessage().getFormattedMessage().length()>1990) {
-                DCMain.jda.getGuildById(config.getString("Bot.guildid")).getTextChannelById(config.getString("Bot.consoleid")).sendMessage(ConsoleBuilder.sb.toString()).queue();
+                Utils.sendtoconsole(ConsoleBuilder.sb.toString());
                 ConsoleBuilder.sb.setLength(0);
                 if(e.getMessage().getFormattedMessage().length()<1990) {
                     ConsoleBuilder.sb.append(e.getMessage().getFormattedMessage() + "\n");
                 } else {
                     for(String mn : e.getMessage().getFormattedMessage().split("(?<=\\G.{4})")) {
-                        DCMain.jda.getGuildById(config.getString("Bot.guildid")).getTextChannelById(config.getString("Bot.consoleid")).sendMessage(mn).queue();
+                        Utils.sendtoconsole(mn);
                     }
                 }
             } else {

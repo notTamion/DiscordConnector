@@ -10,7 +10,5 @@ commands:
   setmcsyntax:
   setdcsyntax:
   setguildid:
-  setchatid:
-  setconsoleid:
   setjoinsyntax:
   setleavesyntax:
