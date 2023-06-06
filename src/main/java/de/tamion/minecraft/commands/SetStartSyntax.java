@@ -6,10 +6,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
-public class SetDCSyntax implements CommandExecutor {
+public class SetStartSyntax implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
-        sender.sendMessage(Utils.setsyntax(sender, "Bot.dcsyntax", String.join(" ", args)));
+        sender.sendMessage(Utils.setsyntax(sender, "Bot.startsyntax", String.join(" ", args)));
         return true;
     }
 }

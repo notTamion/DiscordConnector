@@ -8,8 +8,10 @@ This is a Minecraft Plugin that combines Discord and Minecraft into one!
 - /setdcsyntax {syntax} - Change how messages sent on Minecraft get sent in Discord. - Example Syntax: [MC]{username}: {message}
 - /setjoinsyntax {syntax} - Change how join messages get sent in Discord - Example Syntax: [MC]{username} joined the Server!
 - /setleavesyntax {syntax} - Change how leave messages get sent in Discord - Example Syntax: [MC]{username} left the Server!
+- /setstartsyntax {syntax} - Change how start messages get sent in Discord - Example Syntax: Bot Online!
+- /setstopsyntax {syntax} - Change how stop messages get sent in Discord - Example Syntax: Bot Offline!
 
-NOTE: {username} and {message} need to be written in lowercase.
+{username} and {message} need to be written in lowercase. If you want to disable a feature just leave the syntax empty
 ### Channels
 Every Channel that has "MCCHAT" in its Description/Topic will act as Bridge for Minecraft and Discord Chat.\
 Every Channel that has "MCCONSOLE" in its Description/Topic will act as Minecraft Console. \

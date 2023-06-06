@@ -26,6 +26,9 @@ public class DCChat extends ListenerAdapter {
         if(e.getMessage().getContentDisplay().startsWith("/")) {
             return;
         }
+        if(config.getString("Bot.mcsyntax").equals("")) {
+            return;
+        }
         Bukkit.getServer().broadcastMessage(config.getString("Bot.mcsyntax").replaceAll("\\{username}", e.getMember().getEffectiveName()).replaceAll("\\{message}", msg));
     }
 }

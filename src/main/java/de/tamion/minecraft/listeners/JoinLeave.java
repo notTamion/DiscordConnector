@@ -9,15 +9,14 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class JoinLeave implements Listener {
+    static FileConfiguration config = MCMain.getPlugin().getConfig();
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        FileConfiguration config = MCMain.getPlugin().getConfig();
         Utils.sendtochat(config.getString("Bot.joinsyntax").replaceAll("\\{username}", e.getPlayer().getName()));
     }
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
-        FileConfiguration config = MCMain.getPlugin().getConfig();
         Utils.sendtochat(config.getString("Bot.leavesyntax").replaceAll("\\{username}", e.getPlayer().getName()));
     }
 }

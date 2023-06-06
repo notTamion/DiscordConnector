@@ -21,13 +21,14 @@ public class Schedulers {
     public static void updatesyntaxchannel() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(MCMain.getPlugin(), () -> {
             for(TextChannel textChannel : DCMain.jda.getGuildById(MCMain.getPlugin().getConfig().getString("Bot.guildid")).getTextChannels()) {
-                if(textChannel.getTopic() != null && textChannel.getTopic().startsWith("MCSYNTAX:")) {
-                    String newname = textChannel.getTopic().replace("MCSYNTAX:", "").trim().replaceAll(" ", "-")
-                            .replaceAll("\\{players}", String.valueOf(Bukkit.getOnlinePlayers().size()));
-                    if (!textChannel.getName().equals(newname)) {
-                        textChannel.getManager().setName(newname).queue();
-                        break;
-                    }
+                if(textChannel.getTopic() == null || textChannel.getTopic().startsWith("MCSYNTAX:")) {
+                    return;
+                }
+                String newname = textChannel.getTopic().replace("MCSYNTAX:", "").trim().replaceAll(" ", "-")
+                        .replaceAll("\\{players}", String.valueOf(Bukkit.getOnlinePlayers().size()));
+                if (!textChannel.getName().equals(newname)) {
+                    textChannel.getManager().setName(newname).queue();
+                    break;
                 }
             }
         }, 20L, 6000L);

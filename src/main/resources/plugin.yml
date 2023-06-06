@@ -11,3 +11,5 @@ commands:
   setguildid:
   setjoinsyntax:
   setleavesyntax:
+  setstartsyntax:
+  setstopsyntax:

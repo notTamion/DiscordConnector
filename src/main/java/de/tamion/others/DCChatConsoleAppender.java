@@ -23,21 +23,21 @@ public class DCChatConsoleAppender extends AbstractAppender {
     @Override
     public void append(LogEvent e) {
         FileConfiguration config = MCMain.getPlugin().getConfig();
-        if(DCMain.jda != null && DCMain.jda.getGuildById(config.getString("Bot.guildid")) != null) {
-            if(Schedulers.sb.length()+e.getMessage().getFormattedMessage().length()>1990) {
-                Utils.sendtoconsole(Schedulers.sb.toString());
-                Schedulers.sb.setLength(0);
-                if(e.getMessage().getFormattedMessage().length()<1990) {
-                    Schedulers.sb.append(e.getMessage().getFormattedMessage() + "\n");
-                } else {
-                    for(String mn : e.getMessage().getFormattedMessage().split("(?<=\\G.{4})")) {
-                        Utils.sendtoconsole(mn);
-                    }
-                }
-            } else {
+        if(DCMain.jda == null || DCMain.jda.getGuildById(config.getString("Bot.guildid")) == null) {
+            return;
+        }
+        if(Schedulers.sb.length()+e.getMessage().getFormattedMessage().length()>1990) {
+            Utils.sendtoconsole(Schedulers.sb.toString());
+            Schedulers.sb.setLength(0);
+            if(e.getMessage().getFormattedMessage().length()<1990) {
                 Schedulers.sb.append(e.getMessage().getFormattedMessage() + "\n");
+            } else {
+                for(String mn : e.getMessage().getFormattedMessage().split("(?<=\\G.{4})")) {
+                    Utils.sendtoconsole(mn);
+                }
             }
-
+        } else {
+            Schedulers.sb.append(e.getMessage().getFormattedMessage() + "\n");
         }
     }
 }
