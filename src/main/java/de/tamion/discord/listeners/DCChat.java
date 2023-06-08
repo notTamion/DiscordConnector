@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class DCChat extends ListenerAdapter {
@@ -23,12 +24,12 @@ public class DCChat extends ListenerAdapter {
         if(e.getAuthor().isBot()) {
             return;
         }
-        if(e.getMessage().getContentDisplay().startsWith("/")) {
+        if(msg.startsWith("/")) {
             return;
         }
         if(config.getString("Bot.mcsyntax").equals("")) {
             return;
         }
-        Bukkit.getServer().broadcastMessage(config.getString("Bot.mcsyntax").replaceAll("\\{username}", e.getMember().getEffectiveName()).replaceAll("\\{message}", msg));
+        Bukkit.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', config.getString("Bot.mcsyntax")).replaceAll("\\{username}", e.getMember().getEffectiveName()).replaceAll("\\{message}", msg.replaceAll("§", "")));
     }
 }

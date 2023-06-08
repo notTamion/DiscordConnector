@@ -2,17 +2,12 @@ package de.tamion.minecraft;
 
 import de.tamion.discord.DCMain;
 import de.tamion.minecraft.commands.*;
-import de.tamion.others.Utils;
-import net.dv8tion.jda.api.EmbedBuilder;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.awt.*;
 
 public final class MCMain extends JavaPlugin {
 
     static MCMain plugin;
-
     @Override
     public void onEnable() {
         plugin = this;

@@ -3,7 +3,7 @@ package de.tamion.discord;
 import de.tamion.discord.listeners.Console;
 import de.tamion.discord.listeners.DCChat;
 import de.tamion.minecraft.MCMain;
-import de.tamion.minecraft.listeners.Chat;
+import de.tamion.minecraft.listeners.MCChat;
 import de.tamion.minecraft.listeners.JoinLeave;
 import de.tamion.others.DCChatConsoleAppender;
 import de.tamion.others.Schedulers;
@@ -49,7 +49,7 @@ public class DCMain {
             Schedulers.consolescheduler();
             Schedulers.updatesyntaxchannel();
             PluginManager pluginManager = Bukkit.getPluginManager();
-            pluginManager.registerEvents(new Chat(), MCMain.getPlugin());
+            pluginManager.registerEvents(new MCChat(), MCMain.getPlugin());
             pluginManager.registerEvents(new JoinLeave(), MCMain.getPlugin());
             EmbedBuilder eb = new EmbedBuilder();
             eb.setTitle(config.getString("Bot.startsyntax"));
