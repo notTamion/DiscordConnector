@@ -1,5 +1,6 @@
 package de.tamion.minecraft;
 
+import de.tamion.Metrics;
 import de.tamion.discord.DCMain;
 import de.tamion.minecraft.commands.*;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -21,6 +22,8 @@ public final class MCMain extends JavaPlugin {
         getCommand("setstartsyntax").setExecutor(new SetStartSyntax());
         getCommand("setstopsyntax").setExecutor(new SetStopSyntax());
         getCommand("setguildid").setExecutor(new SetGuildID());
+
+        Metrics metrics = new Metrics(this, 19003);
     }
 
     @Override
