@@ -19,16 +19,7 @@ public class Console extends ListenerAdapter {
             return;
         }
         TextChannel channel = (TextChannel) e.getChannel();
-        if(channel.getTopic() == null || !channel.getTopic().contains("MCCONSOLE") || !e.getGuild().getId().equals(config.getString("Bot.guildid"))) {
-            return;
-        }
-        if(e.getAuthor().isBot()) {
-            return;
-        }
-        if(e.getMessage().getContentDisplay().startsWith("/")) {
-            return;
-        }
-        if(!e.getMember().hasPermission(Permission.MANAGE_SERVER)) {
+        if(channel.getTopic() == null || !channel.getTopic().contains("MCCONSOLE") || !e.getGuild().getId().equals(config.getString("Bot.guildid")) || e.getAuthor().isBot() || e.getMessage().getContentDisplay().startsWith("/") || !e.getMember().hasPermission(Permission.MANAGE_SERVER)) {
             return;
         }
         Bukkit.getScheduler().callSyncMethod(MCMain.getPlugin(), () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), e.getMessage().getContentDisplay()));

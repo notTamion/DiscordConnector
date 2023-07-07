@@ -35,8 +35,8 @@ public final class MCMain extends JavaPlugin {
         return plugin;
     }
 
-    public static void defaultconfig() {
-        FileConfiguration config = plugin.getConfig();
+    public void defaultconfig() {
+        FileConfiguration config = getConfig();
         if(!config.contains("Bot.mcsyntax")) {
             config.set("Bot.mcsyntax", "[Discord] {username}: {message}");
         }
@@ -61,6 +61,6 @@ public final class MCMain extends JavaPlugin {
         if(!config.contains("Bot.guildid")) {
             config.set("Bot.guildid", "GUILDID");
         }
-        plugin.saveConfig();
+        saveConfig();
     }
 }

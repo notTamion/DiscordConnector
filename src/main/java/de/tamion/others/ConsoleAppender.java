@@ -8,10 +8,10 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.bukkit.configuration.file.FileConfiguration;
 
-@Plugin(name = "DCChatConsoleAppender", category = "Core", elementType = "appender", printObject = true)
-public class DCChatConsoleAppender extends AbstractAppender {
-    public DCChatConsoleAppender() {
-        super("DCChatConsoleAppender", null,
+@Plugin(name = "DiscordConnectorAppender", category = "Core", elementType = "appender", printObject = true)
+public class ConsoleAppender extends AbstractAppender {
+    public ConsoleAppender() {
+        super("DiscordConnectorAppender", null,
                 PatternLayout.newBuilder().withPattern("[%d{HH:mm:ss} %level]: %msg").build());
     }
 
@@ -26,18 +26,18 @@ public class DCChatConsoleAppender extends AbstractAppender {
         if(DCMain.jda == null || DCMain.jda.getGuildById(config.getString("Bot.guildid")) == null) {
             return;
         }
-        if(Schedulers.sb.length()+e.getMessage().getFormattedMessage().length()>1990) {
-            Utils.sendtoconsole(Schedulers.sb.toString());
-            Schedulers.sb.setLength(0);
-            if(e.getMessage().getFormattedMessage().length()<1990) {
-                Schedulers.sb.append(e.getMessage().getFormattedMessage() + "\n");
-            } else {
-                for(String mn : e.getMessage().getFormattedMessage().split("(?<=\\G.{4})")) {
-                    Utils.sendtoconsole(mn);
-                }
-            }
-        } else {
+        if(Schedulers.sb.length()+e.getMessage().getFormattedMessage().length()<1990) {
             Schedulers.sb.append(e.getMessage().getFormattedMessage() + "\n");
+            return;
+        }
+        Utils.sendtoconsole(Schedulers.sb.toString());
+        Schedulers.sb.setLength(0);
+        if(e.getMessage().getFormattedMessage().length()<1990) {
+            Schedulers.sb.append(e.getMessage().getFormattedMessage() + "\n");
+            return;
+        }
+        for(String mn : e.getMessage().getFormattedMessage().split("(?<=\\G.{4})")) {
+            Utils.sendtoconsole(mn);
         }
     }
 }

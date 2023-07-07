@@ -12,10 +12,11 @@ public class Schedulers {
     public static void consolescheduler() {
         FileConfiguration config = MCMain.getPlugin().getConfig();
         Bukkit.getScheduler().scheduleSyncRepeatingTask(MCMain.getPlugin(), () -> {
-            if(sb.length() != 0) {
-                Utils.sendtoconsole(sb.toString());
-                sb.setLength(0);
+            if(sb.length() == 0) {
+                return;
             }
+            Utils.sendtoconsole(sb.toString());
+            sb.setLength(0);
         }, 20L, 20L);
     }
     public static void updatesyntaxchannel() {

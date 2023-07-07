@@ -18,16 +18,7 @@ public class DCChat extends ListenerAdapter {
             return;
         }
         TextChannel channel = (TextChannel) e.getChannel();
-        if(channel.getTopic() == null || !channel.getTopic().contains("MCCHAT") || !e.getGuild().getId().equals(config.getString("Bot.guildid"))) {
-            return;
-        }
-        if(e.getAuthor().isBot()) {
-            return;
-        }
-        if(msg.startsWith("/")) {
-            return;
-        }
-        if(config.getString("Bot.mcsyntax").equals("")) {
+        if(channel.getTopic() == null || !channel.getTopic().contains("MCCHAT") || !e.getGuild().getId().equals(config.getString("Bot.guildid")) || e.getAuthor().isBot() || msg.startsWith("/") || config.getString("Bot.mcsyntax").equals("")) {
             return;
         }
         Bukkit.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', config.getString("Bot.mcsyntax")).replaceAll("\\{username}", e.getMember().getEffectiveName()).replaceAll("\\{message}", msg.replaceAll("§", "")));
