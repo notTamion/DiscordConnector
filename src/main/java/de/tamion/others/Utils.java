@@ -39,7 +39,7 @@ public class Utils {
         });
     }
     public static String setsyntax(CommandSender sender, String loc, String syntax) {
-        if(!sender.hasPermission("DCChat.syntax")) {
+        if(!sender.hasPermission("DiscordConnector.syntax")) {
             return "You are not allowed to execute this Command!";
         }
         MCMain.getPlugin().getConfig().set(loc, syntax);
