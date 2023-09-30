@@ -5,7 +5,7 @@ import de.tamion.discord.listeners.DCChat;
 import de.tamion.minecraft.MCMain;
 import de.tamion.minecraft.listeners.MCChat;
 import de.tamion.minecraft.listeners.JoinLeave;
-import de.tamion.others.DCChatConsoleAppender;
+import de.tamion.others.ConsoleAppender;
 import de.tamion.others.Schedulers;
 import de.tamion.others.Utils;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -44,8 +44,7 @@ public class DCMain {
             jb.addEventListeners(new DCChat());
             jb.addEventListeners(new Console());
             jda = jb.build().awaitReady();
-            Logger log = (Logger) LogManager.getRootLogger();
-            log.addAppender(new DCChatConsoleAppender());
+            ((Logger) LogManager.getRootLogger()).addAppender(new ConsoleAppender());
             Schedulers.consolescheduler();
             Schedulers.updatesyntaxchannel();
             PluginManager pluginManager = Bukkit.getPluginManager();
@@ -64,8 +63,8 @@ public class DCMain {
 
     public static void shutdown() {
         Logger log = (Logger) LogManager.getRootLogger();
-        if(log.getAppenders().containsKey("DCChatConsoleAppender")) {
-            log.removeAppender(log.getAppenders().get("DCChatConsoleAppender"));
+        if(log.getAppenders().containsKey("DiscordConnectorAppender")) {
+            log.removeAppender(log.getAppenders().get("DiscordConnectorAppender"));
         }
         if(jda != null) {
             try {

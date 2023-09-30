@@ -1,4 +1,4 @@
-name: DCChat
+name: DiscordConnector
 version: '${project.version}'
 main: de.tamion.minecraft.MCMain
 authors: [ Tamion ]
