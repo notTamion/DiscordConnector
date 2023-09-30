@@ -9,7 +9,7 @@ This is a Minecraft Plugin that combines Discord and Minecraft into one!
 - /setjoinsyntax {syntax} - Change how join messages get sent in Discord - Example Syntax: [MC]{username} joined the Server!
 - /setleavesyntax {syntax} - Change how leave messages get sent in Discord - Example Syntax: [MC]{username} left the Server!
 
-NOTE: {username} and {message} need to be written in lowercase.\
+NOTE: {username} and {message} need to be written in lowercase.
 ### Channels
 Every Channel that has "MCCHAT" in its Description/Topic will act as Bridge for Minecraft and Discord Chat.\
 Every Channel that has "MCCONSOLE" in its Description/Topic will act as Minecraft Console.
