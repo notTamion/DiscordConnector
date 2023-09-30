@@ -1,10 +1,8 @@
-package de.tamion.mc;
+package de.tamion.minecraft;
 
-import de.tamion.dc.DCMain;
-import de.tamion.mc.commands.*;
-import org.bukkit.Bukkit;
+import de.tamion.discord.DCMain;
+import de.tamion.minecraft.commands.*;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MCMain extends JavaPlugin {
@@ -13,7 +11,6 @@ public final class MCMain extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        PluginManager pluginManager = Bukkit.getPluginManager();
         plugin = this;
         defaultconfig();
         DCMain.startup();
@@ -22,7 +19,8 @@ public final class MCMain extends JavaPlugin {
         getCommand("setmcsyntax").setExecutor(new SetMCSyntax());
         getCommand("setdcsyntax").setExecutor(new SetDCSyntax());
         getCommand("setguildid").setExecutor(new SetGuildID());
-        getCommand("setchannelid").setExecutor(new SetChannelID());
+        getCommand("setchatid").setExecutor(new SetChatID());
+        getCommand("setconsoleid").setExecutor(new SetConsoleID());
     }
 
     @Override
@@ -37,10 +35,10 @@ public final class MCMain extends JavaPlugin {
     public static void defaultconfig() {
         FileConfiguration config = plugin.getConfig();
         if(!config.contains("Bot.mcsyntax")) {
-            config.set("Bot.mcsyntax", "[DC] {username}: {message}");
+            config.set("Bot.mcsyntax", "[Discord] {username}: {message}");
         }
         if(!config.contains("Bot.dcsyntax")) {
-            config.set("Bot.dcsyntax", "{username}: {message}");
+            config.set("Bot.dcsyntax", "[Minecraft] {username}: {message}");
         }
         if(!config.contains("Bot.token")) {
             config.set("Bot.token", "TOKEN");
@@ -48,8 +46,11 @@ public final class MCMain extends JavaPlugin {
         if(!config.contains("Bot.guildid")) {
             config.set("Bot.guildid", "GUILDID");
         }
-        if(!config.contains("Bot.textchannelid")) {
-            config.set("Bot.textchannelid", "CHANNELID");
+        if(!config.contains("Bot.chatid")) {
+            config.set("Bot.chatid", "CHATID");
+        }
+        if(!config.contains("Bot.consoleid")) {
+            config.set("Bot.consoleid", "CONSOLEID");
         }
         plugin.saveConfig();
     }

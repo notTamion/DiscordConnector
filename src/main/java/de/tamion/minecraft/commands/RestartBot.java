@@ -1,6 +1,6 @@
-package de.tamion.mc.commands;
+package de.tamion.minecraft.commands;
 
-import de.tamion.dc.DCMain;
+import de.tamion.discord.DCMain;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
