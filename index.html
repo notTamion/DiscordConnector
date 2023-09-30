@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Change the description wrt project -->
+  <meta name="description" content="A Minecraft Plugin that combines Discord and Minecraft" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="icon" href="https://www.spigotmc.org/data/resource_icons/109/109770.jpg?1685866321">
+
+  <!-- You can add your own fonts from fonts.google.com -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+
+  <!-- Default Script tags -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./public/js/index.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+    };
+  </script>
+
+  <!-- Replace the title name -->
+  <title>DiscordConnector</title>
+</head>
+
+<body style="font-family: 'Poppins', sans-serif; min-height: 100vh; display: flex; flex-direction: column;"
+  class="dark:bg-slate-900 bg-white dark:text-white">
+  <!-- Header start here -->
+  <header class="w-full p-3 border-b dark:border-b flex">
+    <nav
+      class="w-full flex flex-col lg:flex-row md:flex-row sm:flex-row items-start lg:item-center md:item-center sm:item-center lg:justify-between md:justify-between sm:justify-between justify-start">
+      <ul>
+        <!-- You can change your logo name -->
+        <li class="font-mono text-xl">DiscordConnector</li>
+      </ul>
+      <ul id="header-nav" class="mr-6 sm:flex md:flex lg:flex hidden">
+        <div>
+          <ul class="flex">
+            <!-- Change the href link to your respective social media accounts-->
+            <li class="mr-5 flex dark:hidden">
+              <p onclick="darkmode()">
+                <img src="./public/svgs/sun.svg" alt="sun Link" />
+              </p>
+            </li>
+            <li class="mr-5 hidden dark:flex">
+              <p onclick="lightmode()">
+                <img src="./public/svgs/sun-dark.svg" alt="sun Link" />
+              </p>
+            </li>
+            <li class="flex dark:hidden">
+              <a href="https://github.com/notTamion/DiscordConnector"><img src="./public/svgs/github.svg"
+                  alt="GitHub Link" /></a>
+            </li>
+            <li class="hidden dark:flex">
+              <a href="https://github.com/notTamion/DiscordConnector"><img src="./public/svgs/github-dark.svg"
+                  alt="GitHub Link" /></a>
+            </li>
+          </ul>
+        </div>
+      </ul>
+    </nav>
+
+    <div class="sm:hidden flex" onclick="OnclickOpenMenu()" id="open-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+          clip-rule="evenodd" />
+      </svg>
+    </div>
+    <div class="hidden" onclick="OnclickCloseMenu()" id="close-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </div>
+  </header>
+  <!-- Header ends here -->
+
+  <div class="flex flex-col md:flex-row lg:flex-row">
+    <!-- Side menu starts here -->
+    <nav class="flex ml-10 mt-7 md:fixed lg:fixed" data-spy="affix" data-offset-top="300" data-offset-bottom="200"
+      role="navigation">
+      <ul class="nav">
+        <li class="font-medium"><a href="#link1">Getting Started</a></li>
+        <li class="font-medium">
+          <a href="#link2">Installation</a>
+          <ul class="nav">
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+              <a href="#link2_1">Required Setup</a>
+            </li>
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+              <a href="#link2_2">Chat</a>
+            </li>
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+              <a href="#link2_3">Console</a>
+            </li>
+          </ul>
+        </li>
+        <li class="font-medium">
+          <a href="#link3">Customization</a>
+          <ul class="nav">
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+              <a href="#link3_1">Syntax</a>
+            </li>
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+              <a href="#link3_2">Disabling Features</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- Side Menu ends here -->
+
+    <div class="pl-5 md:pl-[250px] lg:pl-[250px]">
+      <!-- Link1 start -->
+      <section id="link1">
+        <div class="h-full mt-10">
+          <p class="font-normal text-2xl">Getting Started</p>
+          <p class="leading-0 w-3/4">
+            To Get Started, you need to follow the instructions below
+          </p>
+        </div>
+      </section>
+      <!-- Link1 end -->
+
+      <!-- Link2 Start -->
+      <section id="link2">
+        <div class="h-full mt-5">
+          <p class="font-normal text-2xl">Installation</p>
+        </div>
+        <section id="link2_1" class="border-l-[2px]">
+          <div class="h-full mt-3 ml-5">
+            <p class="font-normal text-xl">Required Setup</p>
+            <p class="text-sm pb-4">
+              1. Download the latest version of DiscordConnector and drag it into your plugins folder<br>
+              2. Start the server and set bot token and guild ID by using commands or directly editing the config <br>
+              3. Reload or restart your server</p>
+          </div>
+        </section>
+        <section id="link2_2" class="border-l-[2px]">
+          <div class="h-full mt-5 ml-5">
+            <p class="font-normal text-xl">Chat</p>
+            <p class="text-sm pb-4">To use the chat bridge you need to add "MCCHAT" somewhere in the topic/description
+              of the channel you want to use as chat bridge
+            </p>
+            <img src="images/ChatChannelTopicExample.png" alt="" style="border-radius: 10px;">
+          </div>
+        </section>
+        <section id="link2_3" class="border-l-[2px]">
+          <div class="h-full mt-5 ml-5">
+            <p class="font-normal text-xl">Console</p>
+            <p class="text-sm pb-4">To use the console bridge you need to add "MCCONSOLE" somewhere in the
+              topic/description of the channel you want to use as console bridge <br>
+              Only users with the "Manage Server" Permission are allowed to use the console
+            </p>
+            <img src="images/ConsoleChannelTopicExample.png" alt="" style="border-radius: 10px;">
+          </div>
+        </section>
+        <section id="link2_4" class="border-l-[2px]">
+          <div class="h-full mt-5 ml-5">
+            <p class="font-normal text-xl">Updating Channel</p>
+            <p class="text-sm pb-4">To use the updating channel you need to add "MCSYNTAX:" followed by a syntax in the
+              topic/description of the channel you want to use as updating channel<br>
+            </p>
+            <img src="images/UpdatingChannelTopicExamples.png" alt="" style="border-radius: 10px;">
+          </div>
+        </section>
+      </section>
+      <!-- Link2 Ends -->
+
+      <!-- Link3 start -->
+      <section id="link3">
+        <div class="h-full mt-5">
+          <p class="font-normal text-2xl">Customization</p>
+        </div>
+        <section id="link3_1" class="border-l-[2px]">
+          <div class="h-full mt-5 ml-5">
+            <p class="font-normal text-xl">Syntax</p>
+            <p class="text-sm pb-4">You can set the syntax of messages using the following commands:</p>
+            <details>
+              <summary>/setmcsyntax</summary>
+              <p class="text-sm">Change how messages sent on Discord get sent in Minecraft - Example Syntax:
+                [DC]{username}: {message}</p>
+            </details>
+            <details>
+              <summary>/setdcsyntax</summary>
+              <p class="text-sm">Change how messages sent on Minecraft get sent in Discord - Example Syntax:
+                [MC]{username}: {message}</p>
+            </details>
+            <details>
+              <summary>/setjoinsyntax</summary>
+              <p class="text-sm">Change how join messages get sent in Discord - Example Syntax: [MC]{username}
+                joined the Server!</p>
+            </details>
+            <details>
+              <summary>/setleavesyntax</summary>
+              <p class="text-sm">Change how leave messages get sent in Discord - Example Syntax: [MC]{username}
+                left the Server!</p>
+            </details>
+            <details>
+              <summary>/setstartsyntax</summary>
+              <p class="text-sm">Change how start messages get sent in Discord - Example Syntax: Bot Online!</p>
+            </details>
+            <details>
+              <summary>/setstopsyntax</summary>
+              <p class="text-sm">Change how stop messages get sent in Discord - Example Syntax: Bot Offline!</p>
+            </details>
+          </div>
+        </section>
+        <section id="link3_2" class="border-l-[2px]">
+          <div class="h-full mt-5 ml-5">
+            <p class="font-normal text-xl">Disabling Features</p>
+            <p class="text-sm pb-4">To disable features just set the syntax to nothing</p>
+          </div>
+        </section>
+      </section>
+      <!-- Link3 end -->
+    </div>
+  </div>
+  <!-- Footer starts here -->
+  <footer style="margin-top: auto;">
+    <div class="dark:bg-white bg-slate-900 h-38 py-1 px-1 mt-5">
+      <div tabindex="0" aria-label="footer"
+        class="focus:outline-none mx-auto container flex flex-col items-center justify-center">
+        <div class="text-black flex flex-col md:items-center f-f-l pt-0">
+          <div class="my-6 text-base text-color f-f-l">
+          </div>
+          <div class="text-sm text-color mb-10 f-f-l">
+            <!-- Rename cleandocs with your respective name -->
+            <p tabindex="0" class="text-white dark:text-black focus:outline-none">
+              &copy; 2023 Tamion. All rights reserved
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer ends here -->
+</body>
+
+</html>
