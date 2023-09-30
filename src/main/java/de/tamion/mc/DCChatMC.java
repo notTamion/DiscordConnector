@@ -21,7 +21,15 @@ public final class DCChatMC extends JavaPlugin {
         plugin = this;
         defaultconfig();
         if(getConfig().contains("Bot.token")) {
-            DCChatDC.startup();
+            if(getConfig().contains("Bot.guildid")) {
+                if(getConfig().contains("Bot.textchannelid")) {
+                    DCChatDC.startup();
+                } else {
+                    Bukkit.getConsoleSender().sendMessage("§TEXTCHANNELID NOT SET. PLEASE SET WITH /setChannelID [ID]");
+                }
+            } else {
+                Bukkit.getConsoleSender().sendMessage("§GUILDID NOT SET. PLEASE SET WITH /setGuildID [ID]");
+            }
         } else {
             Bukkit.getConsoleSender().sendMessage("§cBOT TOKEN NOT SET. PLEASE SET WITH /setBotToken [Token]");
         }
