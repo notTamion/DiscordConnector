@@ -20,8 +20,6 @@ public final class MCMain extends JavaPlugin {
         getCommand("setjoinsyntax").setExecutor(new SetJoinSyntax());
         getCommand("setleavesyntax").setExecutor(new SetLeaveSyntax());
         getCommand("setguildid").setExecutor(new SetGuildID());
-        getCommand("setchatid").setExecutor(new SetChatID());
-        getCommand("setconsoleid").setExecutor(new SetConsoleID());
     }
 
     @Override
@@ -52,12 +50,6 @@ public final class MCMain extends JavaPlugin {
         }
         if(!config.contains("Bot.guildid")) {
             config.set("Bot.guildid", "GUILDID");
-        }
-        if(!config.contains("Bot.chatid")) {
-            config.set("Bot.chatid", "CHATID");
-        }
-        if(!config.contains("Bot.consoleid")) {
-            config.set("Bot.consoleid", "CONSOLEID");
         }
         plugin.saveConfig();
     }
