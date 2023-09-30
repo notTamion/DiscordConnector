@@ -14,10 +14,11 @@ public final class MCMain extends JavaPlugin {
         plugin = this;
         defaultconfig();
         DCMain.startup();
-        getCommand("restartbot").setExecutor(new RestartBot());
         getCommand("setbottoken").setExecutor(new SetToken());
         getCommand("setmcsyntax").setExecutor(new SetMCSyntax());
         getCommand("setdcsyntax").setExecutor(new SetDCSyntax());
+        getCommand("setjoinsyntax").setExecutor(new SetJoinSyntax());
+        getCommand("setleavesyntax").setExecutor(new SetLeaveSyntax());
         getCommand("setguildid").setExecutor(new SetGuildID());
         getCommand("setchatid").setExecutor(new SetChatID());
         getCommand("setconsoleid").setExecutor(new SetConsoleID());
@@ -39,6 +40,12 @@ public final class MCMain extends JavaPlugin {
         }
         if(!config.contains("Bot.dcsyntax")) {
             config.set("Bot.dcsyntax", "[Minecraft] {username}: {message}");
+        }
+        if(!config.contains("Bot.joinsyntax")) {
+            config.set("Bot.joinsyntax", "[Minecraft] {username} joined the Server!");
+        }
+        if(!config.contains("Bot.leavesyntax")) {
+            config.set("Bot.leavesyntax", "[Minecraft] {username} left the Server!");
         }
         if(!config.contains("Bot.token")) {
             config.set("Bot.token", "TOKEN");

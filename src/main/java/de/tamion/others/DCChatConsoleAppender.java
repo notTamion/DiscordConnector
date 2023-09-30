@@ -1,11 +1,13 @@
 package de.tamion.others;
 
+import com.sun.tools.javac.util.StringUtils;
 import de.tamion.discord.DCMain;
 import de.tamion.minecraft.MCMain;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.appender.AbstractAppender;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.layout.PatternLayout;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 
 @Plugin(name = "DCChatConsoleAppender", category = "Core", elementType = "appender", printObject = true)

@@ -1,6 +1,8 @@
 package de.tamion.discord.listeners;
 
 import de.tamion.minecraft.MCMain;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.channel.ChannelType;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -23,6 +25,9 @@ public class Console extends ListenerAdapter {
             return;
         }
         if(e.getMessage().getContentDisplay().startsWith("/")) {
+            return;
+        }
+        if(!e.getMember().hasPermission(Permission.MANAGE_SERVER)) {
             return;
         }
         Bukkit.getScheduler().callSyncMethod(MCMain.getPlugin(), () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), e.getMessage().getContentDisplay()));

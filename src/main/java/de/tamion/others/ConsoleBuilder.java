@@ -3,6 +3,7 @@ package de.tamion.others;
 import de.tamion.discord.DCMain;
 import de.tamion.minecraft.MCMain;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class ConsoleBuilder {
