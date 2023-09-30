@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 public class SetGuildID implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
-        if(!sender.hasPermission("DCChat.id") || !sender.hasPermission("DCChat.admin")) {
+        if(!sender.hasPermission("DCChat.id") && !sender.hasPermission("DCChat.admin")) {
             sender.sendMessage("You are not allowed to execute this Command!");
             return false;
         }
