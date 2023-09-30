@@ -63,18 +63,18 @@ public class DCMain {
     }
 
     public static void shutdown() {
-        try {
-            EmbedBuilder eb = new EmbedBuilder();
-            eb.setTitle(config.getString("Bot.stopsyntax"));
-            eb.setColor(Color.RED);
-            Utils.sendtochat(eb.build());
-            Utils.sendtoconsole(eb.build());
-        } catch (IllegalArgumentException ignored) {}
         Logger log = (Logger) LogManager.getRootLogger();
         if(log.getAppenders().containsKey("DCChatConsoleAppender")) {
             log.removeAppender(log.getAppenders().get("DCChatConsoleAppender"));
         }
         if(jda != null) {
+            try {
+                EmbedBuilder eb = new EmbedBuilder();
+                eb.setTitle(config.getString("Bot.stopsyntax"));
+                eb.setColor(Color.RED);
+                Utils.sendtochat(eb.build());
+                Utils.sendtoconsole(eb.build());
+            } catch (IllegalArgumentException ignored) {}
             jda.shutdown();
         } else {
             MCMain.getPlugin().getLogger().info("Can't stop bot. Bot not running.");
