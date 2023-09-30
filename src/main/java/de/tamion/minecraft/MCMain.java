@@ -23,7 +23,7 @@ public final class MCMain extends JavaPlugin {
         getCommand("setstopsyntax").setExecutor(new SetStopSyntax());
         getCommand("setguildid").setExecutor(new SetGuildID());
 
-        Metrics metrics = new Metrics(this, 19003);
+        Metrics metrics = new Metrics(this, 19019);
     }
 
     @Override
