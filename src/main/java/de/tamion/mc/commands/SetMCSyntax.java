@@ -24,6 +24,8 @@ public class SetMCSyntax implements CommandExecutor {
             } else {
                 sender.sendMessage("/setMCSyntax [Syntax]");
             }
+        } else {
+            sender.sendMessage("You are not allowed to execute this Command!");
         }
         return false;
     }

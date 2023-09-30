@@ -1,16 +1,14 @@
 package de.tamion.mc;
 
 import de.tamion.dc.DCChatDC;
-import de.tamion.mc.commands.SetDCSyntax;
-import de.tamion.mc.commands.SetGuildID;
-import de.tamion.mc.commands.SetMCSyntax;
-import de.tamion.mc.commands.SetToken;
+import de.tamion.mc.commands.*;
 import de.tamion.mc.listeners.Chat;
+import de.tamion.mc.listeners.JoinLeave;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import de.tamion.mc.commands.SetChannelID;
+
 public final class DCChatMC extends JavaPlugin {
 
     static DCChatMC plugin;
@@ -20,20 +18,8 @@ public final class DCChatMC extends JavaPlugin {
         PluginManager pluginManager = Bukkit.getPluginManager();
         plugin = this;
         defaultconfig();
-        if(getConfig().contains("Bot.token")) {
-            if(getConfig().contains("Bot.guildid")) {
-                if(getConfig().contains("Bot.textchannelid")) {
-                    DCChatDC.startup();
-                } else {
-                    Bukkit.getConsoleSender().sendMessage("§TEXTCHANNELID NOT SET. PLEASE SET WITH /setChannelID [ID]");
-                }
-            } else {
-                Bukkit.getConsoleSender().sendMessage("§GUILDID NOT SET. PLEASE SET WITH /setGuildID [ID]");
-            }
-        } else {
-            Bukkit.getConsoleSender().sendMessage("§cBOT TOKEN NOT SET. PLEASE SET WITH /setBotToken [Token]");
-        }
-        pluginManager.registerEvents(new Chat(), this);
+        DCChatDC.startup();
+        getCommand("restartbot").setExecutor(new RestartBot());
         getCommand("setbottoken").setExecutor(new SetToken());
         getCommand("setmcsyntax").setExecutor(new SetMCSyntax());
         getCommand("setdcsyntax").setExecutor(new SetDCSyntax());

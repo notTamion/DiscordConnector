@@ -19,6 +19,8 @@ public class SetChannelID implements CommandExecutor {
             } else {
                 sender.sendMessage("/setChannelID [ID]");
             }
+        } else {
+            sender.sendMessage("You are not allowed to execute this Command!");
         }
         return false;
     }

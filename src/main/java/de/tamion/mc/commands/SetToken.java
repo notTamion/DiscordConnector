@@ -16,8 +16,7 @@ public class SetToken implements CommandExecutor {
                 FileConfiguration config = DCChatMC.getPlugin().getConfig();
                 config.set("Bot.token", args[0]);
                 DCChatMC.getPlugin().saveConfig();
-                DCChatDC.restart();
-                sender.sendMessage("Token has been set to " + args[0] + "\nBot Restarted");
+                sender.sendMessage("Token has been set to " + args[0]);
             } else {
                 sender.sendMessage("/setBotToken [BotToken]");
             }
