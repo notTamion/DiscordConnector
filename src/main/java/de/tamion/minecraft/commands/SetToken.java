@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 public class SetToken implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
-        if(!sender.hasPermission("DCChat.token") && !sender.hasPermission("DCChat.admin")) {
+        if(!sender.hasPermission("DCChat.token")) {
             sender.sendMessage("You are not allowed to execute this Command!");
             return false;
         }
