@@ -21,4 +21,4 @@ The first Channel that has a Description/Topic that starts with "MCSYNTAX:" will
 - DCChat.syntax - /setdcsyntax /setmcsyntax /setjoinsyntax /setleavesyntax
 - Manage Server - Execute Commands from Console on Discord
 
-Now you should be good to go for questions or help please contact me on Discord @tamion or SpigotMC.
+For questions or help please contact me on Discord @tamion or SpigotMC.
