@@ -139,7 +139,8 @@
             <p class="font-normal text-xl">Required Setup</p>
             <p class="text-sm pb-4">
               1. Download the latest version of DiscordConnector and drag it into your plugins folder<br>
-              2. Start the server and set bot token and guild ID by using commands or directly editing the config <br>
+              2. Start the server and set bot token and guild ID by using commands for which you will need the
+              permissions DiscordConnector.token and DiscordConnector.id or directly editing the config <br>
               3. Reload or restart your server</p>
           </div>
         </section>
@@ -207,10 +208,12 @@
               <summary>/setstartsyntax</summary>
               <p class="text-sm">Change how start messages get sent in Discord - Example Syntax: Bot Online!</p>
             </details>
-            <details>
+            <details class="pb-4">
               <summary>/setstopsyntax</summary>
               <p class="text-sm">Change how stop messages get sent in Discord - Example Syntax: Bot Offline!</p>
             </details>
+            <p class="text-sm pb-4">Only users with the DiscordConnector.syntax permission can execute these commands
+            </p>
           </div>
         </section>
         <section id="link3_2" class="border-l-[2px]">
