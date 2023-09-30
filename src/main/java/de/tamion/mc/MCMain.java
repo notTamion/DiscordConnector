@@ -1,24 +1,22 @@
 package de.tamion.mc;
 
-import de.tamion.dc.DCChatDC;
+import de.tamion.dc.DCMain;
 import de.tamion.mc.commands.*;
-import de.tamion.mc.listeners.Chat;
-import de.tamion.mc.listeners.JoinLeave;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class DCChatMC extends JavaPlugin {
+public final class MCMain extends JavaPlugin {
 
-    static DCChatMC plugin;
+    static MCMain plugin;
 
     @Override
     public void onEnable() {
         PluginManager pluginManager = Bukkit.getPluginManager();
         plugin = this;
         defaultconfig();
-        DCChatDC.startup();
+        DCMain.startup();
         getCommand("restartbot").setExecutor(new RestartBot());
         getCommand("setbottoken").setExecutor(new SetToken());
         getCommand("setmcsyntax").setExecutor(new SetMCSyntax());
@@ -29,10 +27,10 @@ public final class DCChatMC extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        DCChatDC.shutdown();
+        DCMain.shutdown();
     }
 
-    public static DCChatMC getPlugin() {
+    public static MCMain getPlugin() {
         return plugin;
     }
 
@@ -42,9 +40,17 @@ public final class DCChatMC extends JavaPlugin {
             config.set("Bot.mcsyntax", "[DC] {Username}: {Message}");
         }
         if(!config.contains("Bot.dcsyntax")) {
-            config.set("Bot.dcsyntax", "[MC] {Username}: {Message}");
+            config.set("Bot.dcsyntax", "{Username}: {Message}");
         }
-
+        if(!config.contains("Bot.token")) {
+            config.set("Bot.token", "TOKEN");
+        }
+        if(!config.contains("Bot.guildid")) {
+            config.set("Bot.guildid", "GUILDID");
+        }
+        if(!config.contains("Bot.textchannelid")) {
+            config.set("Bot.textchannelid", "CHANNELID");
+        }
         plugin.saveConfig();
     }
 }
