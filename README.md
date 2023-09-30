@@ -4,7 +4,7 @@ This is a Minecraft Plugin that combines Discord and Minecraft chat into one!
 ### Setup:
 1. Put the Plugin into your Plugins folder
 2. Start your server
-3. Set the discord Token with /settoken [Token]
+3. Set the discord Token with /setbottoken [Token]
 4. Set the discord guild ID with /setguildid [GuildID]
 5. Set the discord chat ID with /setchatid [ChatID]
 6. Set the discord console ID with /setconsoleid [ConsoleID]
