@@ -5,12 +5,14 @@ import de.tamion.minecraft.MCMain;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import org.bukkit.command.CommandSender;
 
+import java.util.ArrayList;
+
 public class Utils {
     public static void sendtochat(String msg) {
         DCMain.jda.getGuildById(MCMain.getPlugin().getConfig().getString("Bot.guildid")).getTextChannels().forEach(textChannel -> {
             if(textChannel.getTopic() != null && textChannel.getTopic().contains("MCCHAT")) {
                 try {
-                    textChannel.sendMessage(msg).queue();
+                    textChannel.sendMessage(msg).setAllowedMentions(new ArrayList<>()).queue();
                 } catch (IllegalStateException ignored) {}
             }
         });
@@ -26,7 +28,7 @@ public class Utils {
         DCMain.jda.getGuildById(MCMain.getPlugin().getConfig().getString("Bot.guildid")).getTextChannels().forEach(textChannel -> {
             if(textChannel.getTopic() != null && textChannel.getTopic().contains("MCCONSOLE")) {
                 try {
-                    textChannel.sendMessage(msg).queue();
+                    textChannel.sendMessage(msg).setAllowedMentions(new ArrayList<>()).queue();
                 } catch (IllegalStateException ignored) {}
             }
         });

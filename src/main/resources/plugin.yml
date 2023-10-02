@@ -4,7 +4,7 @@ main: de.tamion.minecraft.MCMain
 authors: [ Tamion ]
 api-version: '1.13'
 description: Uses JDA to combine Minecraft and Discord
-load: STARTUPbe
+load: STARTUP
 commands:
   setbottoken:
   setmcsyntax:
